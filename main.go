@@ -12,8 +12,10 @@ type NavBarData struct {
 
 func main() {
 
-	// handle static assets
+	// TODO consider using http://www.gorillatoolkit.org/pkg/mux or https://github.com/julienschmidt/httprouter
+	// and then e.g. "go get github.com/julienschmidt/httprouter"
 	mux := http.NewServeMux()
+	// handle static assets
 	files := http.FileServer(http.Dir("resources"))
 	mux.Handle("/resources/", http.StripPrefix("/resources/", files))
 
